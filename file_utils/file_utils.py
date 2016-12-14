@@ -1,12 +1,5 @@
-import json
-import unidecode
-import requests
-import datetime
-import time
 import os
-import urllib
-from slugify import slugify
-from bs4 import BeautifulSoup
+from shutil import copyfile
 
 def get_files_in_directory_skip_hidden(path):
     dirs = get_files_in_directory(path)
@@ -21,8 +14,11 @@ def get_folders_in_directory(path):
 def check_file_or_folder_exists(name_and_path):
     return os.path.exists(name_and_path)
 
-def move_file(from_path, to_path):
-    os.rename(from_path, to_path)
+def move_file(source, target):
+    os.rename(source, target)
+
+def copy_file(source, target):
+    copyfile(source, target)
 
 def touch_file(filename_and_path):
     open(filename_and_path, 'a').close()
@@ -35,4 +31,4 @@ def check_file_exists(filename_and_path):
 
 def get_file_size(filename_and_path):
     return os.path.getsize(filename_and_path)
-    # return os.stat(filename_and_path).st_size 
+    # return os.stat(filename_and_path).st_size

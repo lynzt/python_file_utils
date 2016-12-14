@@ -8,11 +8,11 @@ class UtilsTests(unittest.TestCase):
 
     def test_get_files_in_directory_skip_hidden(self):
         files = file_utils.get_files_in_directory_skip_hidden('tests/data')
-        self.assertEqual(len(files), 3)
+        self.assertEqual(len(files), 4)
 
     def test_get_files_in_directory(self):
         files = file_utils.get_files_in_directory('tests/data')
-        self.assertEqual(len(files), 5)
+        self.assertEqual(len(files), 6)
 
     def test_get_folders_in_directory(self):
         dirs = file_utils.get_folders_in_directory('tests/data')
@@ -26,10 +26,19 @@ class UtilsTests(unittest.TestCase):
     def test_move_file(self):
         path1 = 'tests/data/folder2/'
         path2 = 'tests/data/folder3/'
-        file_utils.move_file(path1 + 'file3.txt', path2 + 'file3.txt')
-        self.assertTrue(file_utils.check_file_exists(path2 + 'file3.txt'))
-        file_utils.move_file(path2 + 'file3.txt', path1 + 'file3.txt')
-        self.assertTrue(file_utils.check_file_exists(path1 + 'file3.txt'))
+        file_utils.move_file(path1 + 'file4.txt', path2 + 'file4.txt')
+        self.assertTrue(file_utils.check_file_exists(path2 + 'file4.txt'))
+        file_utils.move_file(path2 + 'file4.txt', path1 + 'file4.txt')
+        self.assertTrue(file_utils.check_file_exists(path1 + 'file4.txt'))
+
+    def test_copy_file(self):
+        file1 = 'tests/data/file3.txt'
+        file2 = 'tests/data/file3_copy.txt'
+        file_utils.copy_file(file1, file2)
+        self.assertTrue(file_utils.check_file_exists(file1))
+        self.assertTrue(file_utils.check_file_exists(file2))
+        file_utils.remove_file(file2)
+        self.assertFalse(file_utils.check_file_exists(file2))
 
     def test_add_and_remove_file(self):
         filename = 'tests/data/file10.txt'
@@ -37,11 +46,6 @@ class UtilsTests(unittest.TestCase):
         self.assertTrue(file_utils.check_file_exists(filename))
         file_utils.remove_file(filename)
         self.assertFalse(file_utils.check_file_exists(filename))
-
-    def test_check_file_exists(self):
-        self.assertTrue(file_utils.check_file_exists('tests/data/file1.txt'))
-        self.assertFalse(file_utils.check_file_exists('tests/data/folder1'))
-        self.assertFalse(file_utils.check_file_exists('tests/data/file5.txt'))
 
     def test_check_file_exists(self):
         self.assertTrue(file_utils.check_file_exists('tests/data/file1.txt'))
