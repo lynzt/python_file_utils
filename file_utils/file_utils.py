@@ -44,7 +44,7 @@ def write_string_to_file(file_handle, str):
     file_handle.write("%s\n" % (str))
 
 def write_dict_to_file(file_handle, dict):
-    file_handle.write(json.dumps(dict))
+    file_handle.write(json.dumps(dict) + "\n")
 
 def close_file(file_handle):
     file_handle.close()

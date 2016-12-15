@@ -61,11 +61,12 @@ class UtilsTests(unittest.TestCase):
     #     file_handle = file_utils.open_file_to_append(filename_and_path)
     #     file_utils.write_string_to_file(file_handle, 'abc123')
     #     file_utils.write_dict_to_file(file_handle, {'hello': 'world'})
+    #     file_utils.write_dict_to_file(file_handle, {'harry': 'potter'})
     #     file_utils.close_file(file_handle)
 
-    def test_truncating_file(self):
-        filename_and_path = 'tests/data/manipulation_file.txt'
-        file_utils.truncate_file(filename_and_path)
+    # def test_truncating_file(self):
+    #     filename_and_path = 'tests/data/manipulation_file.txt'
+    #     file_utils.truncate_file(filename_and_path)
 
 
 
