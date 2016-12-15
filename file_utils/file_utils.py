@@ -32,3 +32,15 @@ def check_file_exists(filename_and_path):
 def get_file_size(filename_and_path):
     return os.path.getsize(filename_and_path)
     # return os.stat(filename_and_path).st_size
+
+def truncate_file(filename_and_path):
+    open(filename_and_path, 'w').close()
+
+def open_file_to_append(filename_and_path):
+    return open(filename_and_path, 'a')
+
+def write_to_file(file_handle, msg):
+    file_handle.write("%s\n" % (msg))
+
+def close_file(file_handle):
+    file_handle.close()

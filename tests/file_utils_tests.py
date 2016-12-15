@@ -8,11 +8,11 @@ class UtilsTests(unittest.TestCase):
 
     def test_get_files_in_directory_skip_hidden(self):
         files = file_utils.get_files_in_directory_skip_hidden('tests/data')
-        self.assertEqual(len(files), 4)
+        self.assertEqual(len(files), 5)
 
     def test_get_files_in_directory(self):
         files = file_utils.get_files_in_directory('tests/data')
-        self.assertEqual(len(files), 6)
+        self.assertEqual(len(files), 7)
 
     def test_get_folders_in_directory(self):
         dirs = file_utils.get_folders_in_directory('tests/data')
@@ -55,6 +55,17 @@ class UtilsTests(unittest.TestCase):
     def test_get_file_size(self):
         self.assertEqual(file_utils.get_file_size('tests/data/file1.txt'), 0)
         self.assertEqual(file_utils.get_file_size('tests/data/cabelas-inc.png'), 7710)
+    #
+    # def test_writing_to_file(self):
+    #     filename_and_path = 'tests/data/manipulation_file.txt'
+    #     file_handle = file_utils.open_file_to_append(filename_and_path)
+    #     file_utils.write_to_file(file_handle, 'abc123')
+    #     file_utils.close_file(file_handle)
+
+    # def test_truncating_file(self):
+    #     filename_and_path = 'tests/data/manipulation_file.txt'
+    #     file_utils.truncate_file(filename_and_path)
+
 
 
 
