@@ -1,4 +1,5 @@
 import os
+import json
 from shutil import copyfile
 
 def get_files_in_directory_skip_hidden(path):
@@ -39,8 +40,11 @@ def truncate_file(filename_and_path):
 def open_file_to_append(filename_and_path):
     return open(filename_and_path, 'a')
 
-def write_to_file(file_handle, msg):
-    file_handle.write("%s\n" % (msg))
+def write_string_to_file(file_handle, str):
+    file_handle.write("%s\n" % (str))
+
+def write_dict_to_file(file_handle, dict):
+    file_handle.write(json.dumps(dict))
 
 def close_file(file_handle):
     file_handle.close()
