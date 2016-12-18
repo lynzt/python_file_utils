@@ -55,6 +55,15 @@ class UtilsTests(unittest.TestCase):
     def test_get_file_size(self):
         self.assertEqual(file_utils.get_file_size('tests/data/file1.txt'), 0)
         self.assertEqual(file_utils.get_file_size('tests/data/cabelas-inc.png'), 7710)
+
+    def test_split_filename_extension(self):
+        uri = "https://yt3.ggpht.com/-p-K2HbhiCfE/AAAAAAAAAAI/AAAAAAAAAAA/k4V1tvBNygo/s100-c-k-no-mo-rj-c0xffffff/photo.jpg"
+        file = file_utils.split_filename_extension(uri)
+        self.assertEqual(file['extension'], '.jpg')
+
+        filename = "a_file.csv"
+        file = file_utils.split_filename_extension(filename)
+        self.assertEqual(file['extension'], '.csv')
     #
     # def test_writing_to_file(self):
     #     filename_and_path = 'tests/data/manipulation_file.txt'
@@ -67,10 +76,6 @@ class UtilsTests(unittest.TestCase):
     # def test_truncating_file(self):
     #     filename_and_path = 'tests/data/manipulation_file.txt'
     #     file_utils.truncate_file(filename_and_path)
-
-
-
-
 
 
 # APIKEY=key_here python -m unittest discover -s tests -p "*_tests.py"

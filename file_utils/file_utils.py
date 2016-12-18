@@ -1,5 +1,6 @@
 import os
 import json
+from urlparse import urlparse
 from shutil import copyfile
 
 def get_files_in_directory_skip_hidden(path):
@@ -33,6 +34,11 @@ def check_file_exists(filename_and_path):
 def get_file_size(filename_and_path):
     return os.path.getsize(filename_and_path)
     # return os.stat(filename_and_path).st_size
+
+def split_filename_extension(file): # pass in filename or uri
+    url_parsed = urlparse(file)
+    filename, extension = os.path.splitext(url_parsed.path)
+    return {'filename': filename, 'extension': extension}
 
 def truncate_file(filename_and_path):
     open(filename_and_path, 'w').close()
