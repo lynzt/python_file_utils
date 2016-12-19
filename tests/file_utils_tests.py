@@ -47,6 +47,19 @@ class UtilsTests(unittest.TestCase):
         file_utils.remove_file(filename)
         self.assertFalse(file_utils.check_file_exists(filename))
 
+    def test_touch_directory(self):
+        path1 = 'tests/data/folder3'
+        path2 = 'tests/data/folder4'
+        self.assertTrue(file_utils.check_directory_exists(path1))
+        file_utils.touch_directory(path1)
+        self.assertTrue(file_utils.check_directory_exists(path1))
+
+        self.assertFalse(file_utils.check_directory_exists(path2))
+        file_utils.touch_directory(path2)
+        self.assertTrue(file_utils.check_directory_exists(path2))
+        file_utils.remove_directory(path2)
+        self.assertFalse(file_utils.check_directory_exists(path2))
+
     def test_check_file_exists(self):
         self.assertTrue(file_utils.check_file_exists('tests/data/file1.txt'))
         self.assertFalse(file_utils.check_file_exists('tests/data/folder1'))

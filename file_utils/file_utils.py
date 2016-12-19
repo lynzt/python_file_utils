@@ -1,7 +1,8 @@
 import os
 import json
+import shutil
 from urlparse import urlparse
-from shutil import copyfile
+# from shutil import copyfile
 
 def get_files_in_directory_skip_hidden(path):
     dirs = get_files_in_directory(path)
@@ -20,13 +21,23 @@ def move_file(source, target):
     os.rename(source, target)
 
 def copy_file(source, target):
-    copyfile(source, target)
+    shutil.copyfile(source, target)
+
+def touch_directory(path):
+    if not check_directory_exists(path):
+        os.makedirs(path)
 
 def touch_file(filename_and_path):
     open(filename_and_path, 'a').close()
 
+def remove_directory(path):
+    shutil.rmtree(path)
+
 def remove_file(file_to_remove):
     os.remove(file_to_remove)
+
+def check_directory_exists(path):
+    return os.path.exists(path)
 
 def check_file_exists(filename_and_path):
     return os.path.isfile(filename_and_path)
