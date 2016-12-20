@@ -1,12 +1,11 @@
 import os
 import json
 import shutil
-from urlparse import urlparse
-# from shutil import copyfile
+from utils import utils
 
 def get_files_in_directory_skip_hidden(path):
     dirs = get_files_in_directory(path)
-    return filter(lambda f: not f.startswith('.'), dirs) # remove files names starting w/ dot
+    return list(filter(lambda f: not f.startswith('.'), dirs)) # remove files names starting w/ dot
 
 def get_files_in_directory(path):
     return next(os.walk(path))[2]
@@ -44,10 +43,9 @@ def check_file_exists(filename_and_path):
 
 def get_file_size(filename_and_path):
     return os.path.getsize(filename_and_path)
-    # return os.stat(filename_and_path).st_size
 
 def split_filename_extension(file): # pass in filename or uri
-    url_parsed = urlparse(file)
+    url_parsed = utils.parse_url_string(file)
     filename, extension = os.path.splitext(url_parsed.path)
     return {'filename': filename, 'extension': extension}
 

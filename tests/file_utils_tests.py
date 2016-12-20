@@ -1,7 +1,5 @@
 import os
 import unittest
-# from freezegun import freeze_time
-# import datetime
 from file_utils import file_utils
 
 class UtilsTests(unittest.TestCase):
