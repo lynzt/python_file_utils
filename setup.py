@@ -6,7 +6,7 @@ setup(name='python_file_utils',
     author='lynzt',
     url='https://github.com/lynzt/python_file_utils',
     packages=['file_utils'],
-    dependency_links=[
-      'git+git://github.com/lynzt/python_utils.git',
+    install_requires=[
+        'urllib3==1.22',
     ],
 )

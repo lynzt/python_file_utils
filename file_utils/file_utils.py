@@ -1,7 +1,7 @@
 import os
 import json
 import shutil
-from utils import utils
+import urllib.parse
 
 def get_files_in_directory_skip_hidden(path):
     dirs = get_files_in_directory(path)
@@ -45,7 +45,7 @@ def get_file_size(filename_and_path):
     return os.path.getsize(filename_and_path)
 
 def split_filename_extension(file): # pass in filename or uri
-    url_parsed = utils.parse_url_string(file)
+    url_parsed = urllib.parse.urlparse(file)
     filename, extension = os.path.splitext(url_parsed.path)
     return {'filename': filename, 'extension': extension}
 
