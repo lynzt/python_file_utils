@@ -88,5 +88,3 @@ class UtilsTests(unittest.TestCase):
     #     filename_and_path = 'tests/data/manipulation_file.txt'
     #     file_utils.truncate_file(filename_and_path)
 
-
-# APIKEY=key_here python -m unittest discover -s tests -p "*_tests.py"
