@@ -7,6 +7,6 @@ setup(name='python_file_utils',
     url='https://github.com/lynzt/python_file_utils',
     packages=['file_utils'],
     install_requires=[
-        'urllib3==1.22',
+        'urllib3==1.24.2',
     ],
 )
